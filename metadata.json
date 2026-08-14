@@ -1,0 +1,12 @@
+{
+  "name": "CHAT IN HB",
+  "description": "A modern social chat application featuring real-time messaging, audio \u0026 video calling, 24-hour stories, user search, profiles, and dark mode.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

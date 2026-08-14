@@ -1,0 +1,34 @@
+{
+  "project_info": {
+    "project_number": "42440498040",
+    "project_id": "gen-lang-client-0474288322",
+    "storage_bucket": "gen-lang-client-0474288322.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42440498040:android:0574b8a0c6b461ce41068d",
+        "android_client_info": {
+          "package_name": "com.chatinhb.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42440498040-41eos0a8p59a0t370dv99k84kvl1573h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYD-RBDlAtkU0pJ89OPxOiQjtniZo2FjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

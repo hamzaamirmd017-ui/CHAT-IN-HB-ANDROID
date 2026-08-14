@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Default deny rule
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read, create, update: if isSignedIn();
+      allow delete: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Posts collection
+    match /posts/{postId} {
+      allow read, create, update: if isSignedIn();
+      allow delete: if isSignedIn() && (
+        resource.data.userId == request.auth.uid || 
+        resource.data.authorId == request.auth.uid
+      );
+    }
+
+    // Stories collection
+    match /stories/{storyId} {
+      allow read, create, update: if isSignedIn();
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // Chats & Messages
+    match /chats/{chatId} {
+      allow read, create, update, delete: if isSignedIn();
+
+      match /messages/{messageId} {
+        allow read, create, update: if isSignedIn();
+        allow delete: if isSignedIn() && (
+          resource.data.senderId == request.auth.uid ||
+          resource.data.userId == request.auth.uid
+        );
+      }
+    }
+
+    // Notifications
+    match /notifications/{notifId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+
+    // Saved Posts
+    match /saved_posts/{savedId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+
+    // Groups & Events
+    match /groups/{groupId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+
+    match /events/{eventId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+
+    // Reports, Story Reports, Story Issues & Calls
+    match /reports/{reportId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+    match /story_reports/{reportId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+    match /story_issues/{issueId} {
+      allow read, create, update, delete: if isSignedIn();
+    }
+    match /calls/{callId} {
+      allow read, create, update, delete: if isSignedIn();
+      match /{subcollection=**} {
+        allow read, write: if isSignedIn();
+      }
+    }
+  }
+}

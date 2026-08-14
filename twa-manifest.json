@@ -1,0 +1,31 @@
+{
+  "packageId": "com.chatinhb.app",
+  "host": "ais-pre-cvrxheidm56aroit35mrkt-272076697886.asia-east1.run.app",
+  "name": "CHAT IN HB",
+  "launcherName": "CHAT IN HB",
+  "themeColor": "#4f46e5",
+  "navigationColor": "#090d16",
+  "navigationColorDark": "#090d16",
+  "navigationDividerColor": "#00000000",
+  "navigationDividerColorDark": "#00000000",
+  "backgroundColor": "#090d16",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://ais-pre-cvrxheidm56aroit35mrkt-272076697886.asia-east1.run.app/icon-512.svg",
+  "maskableIconUrl": "https://ais-pre-cvrxheidm56aroit35mrkt-272076697886.asia-east1.run.app/icon-512.svg",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 100,
+  "signingKey": {
+    "path": "./android-release-key.keystore",
+    "alias": "chatinhb"
+  },
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://ais-pre-cvrxheidm56aroit35mrkt-272076697886.asia-east1.run.app/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    }
+  },
+  "orientation": "portrait"
+}

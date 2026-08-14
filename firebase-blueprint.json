@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "User profiles and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "bio": { "type": "string" },
+        "status": { "type": "string" },
+        "presence": { "type": "string", "enum": ["online", "away", "offline"] },
+        "isOnline": { "type": "boolean" },
+        "lastSeen": { "type": "object" }
+      },
+      "required": ["uid", "displayName"]
+    },
+    "chats": {
+      "title": "Chat Conversations",
+      "description": "Direct message threads between users",
+      "type": "object",
+      "properties": {
+        "participants": { "type": "array", "items": { "type": "string" } },
+        "updatedAt": { "type": "object" },
+        "lastMessage": { "type": "object" }
+      }
+    },
+    "stories": {
+      "title": "User Stories",
+      "description": "24-hour temporary posts",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userDisplayName": { "type": "string" },
+        "userPhotoURL": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "object" },
+        "expiresAt": { "type": "object" }
+      }
+    },
+    "calls": {
+      "title": "WebRTC Calls",
+      "description": "Active audio/video calls",
+      "type": "object",
+      "properties": {
+        "callerId": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    }
+  }
+}

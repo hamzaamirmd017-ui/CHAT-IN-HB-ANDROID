@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+:root {
+  /* Default Light Mode Theme Variables */
+  --bg-main: #FFFFFF;
+  --bg-scaffold: #FFFFFF;
+  --bg-appbar: #FFFFFF;
+  --bg-bottomnav: #FFFFFF;
+  --bg-drawer: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-dialog: #FFFFFF;
+  --bg-popup: #FFFFFF;
+  --bg-bottomsheet: #FFFFFF;
+  --bg-search: #F1F5F9;
+  --bg-input: #F1F5F9;
+  
+  --text-main: #0F172A;
+  --text-secondary: #334155;
+  --text-hint: #64748B;
+  --icon-color: #0F172A;
+  
+  --border-color: #E2E8F0;
+  --divider-color: #E2E8F0;
+
+  --glass-bg: rgba(255, 255, 255, 0.98);
+  --glass-border: #E2E8F0;
+  --glass-subtle-bg: #FFFFFF;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  /* Dark Mode Theme Variables - Pure Black #000000 */
+  --bg-main: #000000;
+  --bg-scaffold: #000000;
+  --bg-appbar: #000000;
+  --bg-bottomnav: #000000;
+  --bg-drawer: #000000;
+  --bg-card: #000000;
+  --bg-dialog: #121212;
+  --bg-popup: #121212;
+  --bg-bottomsheet: #121212;
+  --bg-search: #121212;
+  --bg-input: #121212;
+  
+  --text-main: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-hint: #808080;
+  --icon-color: #FFFFFF;
+  
+  --border-color: #1F1F1F;
+  --divider-color: #1A1A1A;
+
+  --glass-bg: rgba(0, 0, 0, 0.95);
+  --glass-border: #1F1F1F;
+  --glass-subtle-bg: rgba(18, 18, 18, 0.8);
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  html, body, #root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  html.dark body {
+    background-image: none;
+    background-color: #000000;
+  }
+
+  html.light body {
+    background-image: none;
+    background-color: #FFFFFF;
+  }
+}
+
+/* Glass & Card Helper Utility Classes mapped to variables */
+.frosted-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+}
+
+.frosted-glass-subtle {
+  background: var(--glass-subtle-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.frosted-glass-active {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  color: var(--text-main);
+}
+
+.frosted-card {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  box-shadow: var(--card-shadow);
+}
+
+/* Specific theme-aware surface classes */
+.app-bar-bg {
+  background-color: var(--bg-appbar);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.bottom-nav-bg {
+  background-color: var(--bg-bottomnav);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.drawer-bg {
+  background-color: var(--bg-drawer);
+  border-right: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.card-bg {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.dialog-bg {
+  background-color: var(--bg-dialog);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.popup-bg {
+  background-color: var(--bg-popup);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.input-bg {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.search-bg {
+  background-color: var(--bg-search);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+/* Hide scrollbars globally for a native app feel */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+  background: transparent;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

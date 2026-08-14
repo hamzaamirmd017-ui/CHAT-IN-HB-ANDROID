@@ -1,0 +1,29 @@
+{
+  "short_name": "CHAT IN HB",
+  "name": "CHAT IN HB - Realtime Social App",
+  "description": "CHAT IN HB social chat platform featuring real-time messaging, stories, WebRTC audio/video calling, and custom theme modes.",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/icon-192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#090d16",
+  "theme_color": "#4f46e5",
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["social", "communication", "utilities"]
+}

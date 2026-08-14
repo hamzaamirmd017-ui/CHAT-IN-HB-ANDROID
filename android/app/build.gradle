@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.chatinhb.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.chatinhb.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 100
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+            hostName: "ais-pre-cvrxheidm56aroit35mrkt-272076697886.asia-east1.run.app",
+            defaultUrl: "https://ais-pre-cvrxheidm56aroit35mrkt-272076697886.asia-east1.run.app",
+            assetStatements: '[{"relation": ["delegate_permission/common.handle_all_urls"], "target": {"namespace": "android_app", "package_name": "com.chatinhb.app", "sha256_cert_fingerprints": ["FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"]}}]'
+        ]
+    }
+
+    signingConfigs {
+        release {
+            def envKeystore = System.getenv("RELEASE_KEYSTORE_PATH")
+            def keyFile = envKeystore ? file(envKeystore) : file("../../android-release-key.keystore")
+            if (!keyFile.exists()) {
+                keyFile = file("release.keystore")
+            }
+            if (keyFile.exists()) {
+                storeFile keyFile
+                storePassword System.getenv("RELEASE_STORE_PASSWORD") ?: "chatinhbpass"
+                keyAlias System.getenv("RELEASE_KEY_ALIAS") ?: "chatinhb"
+                keyPassword System.getenv("RELEASE_KEY_PASSWORD") ?: "chatinhbpass"
+            } else {
+                storeFile signingConfigs.debug.storeFile
+                storePassword signingConfigs.debug.storePassword
+                keyAlias signingConfigs.debug.keyAlias
+                keyPassword signingConfigs.debug.keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.browser:browser:1.8.0'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+    
+    // Firebase Android SDKs
+    implementation platform('com.google.firebase:firebase-bom:32.8.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-messaging'
+}
